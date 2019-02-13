@@ -12,7 +12,7 @@ In this repo there are two files:
    #     git config remote.origin.url git@github.com:aberral/'nombre del repo'.git
    #     git pull -u origin master
    #     git push -u origin master
-    ```
+   ```
   
   * Layout.R <- This R script create the folder structure of a new project, to maintain consistency across 
   all projects done.
