@@ -1,7 +1,7 @@
 # Rproject_layout
 Layout used for Rprojects 
 In this repo there are two files:
-  * Github.R <- This R script contais the following code, used to start the github repo of a project. 
+  * **Github.R** <- This R script contais the following code, used to start the github repo of a project. 
   Always start the repo before commiting in R.
    ```{r}
    # How to upload things to GitHub:
@@ -14,7 +14,7 @@ In this repo there are two files:
    #     git push -u origin master
    ```
   
-  * Layout.R <- This R script create the folder structure of a new project, to maintain consistency across 
+  * **Layout.R** <- This R script create the folder structure of a new project, to maintain consistency across 
   all projects done.
   ```{r}
   # Basic R-project layout
