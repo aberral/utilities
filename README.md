@@ -1,6 +1,5 @@
-# Rproject_layout
-Layout used for Rprojects 
-In this repo there are two files:
+# Utilities
+Useful things that I have found
   * **Github.R** <- This R script contais the following code, used to start the github repo of a project. 
   Always start the repo before commiting in R.
    ```{r}
