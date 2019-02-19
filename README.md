@@ -29,9 +29,9 @@ Useful things that I have found
   * **RmdtoR.R** <- This R script converts between .rmd and .R format
   ```{R}
   library(knitr)
-# Sin comentarios fuera de los chunks
+# Without comments outside chunks
 purl('index.RMD')
-# Para guardar comentarios
+# Saving all comments
 purl('index.RMD', output = 'test.R', documentation = 2)
   ```
   
