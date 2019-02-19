@@ -26,3 +26,12 @@ In this repo there are two files:
   ifelse(file.exists('figs/'), '', dir.create('figs/'))
   ifelse(file.exists('output/'), '', dir.create('output/'))
   ```
+
+  * **RmdtoR.R** <- This R script converts between .rmd and .R format
+  ```{R}
+  library(knitr)
+# Sin comentarios fuera de los chunks
+purl('index.RMD')
+# Para guardar comentarios
+purl('index.RMD', output = 'test.R', documentation = 2)
+  ```
