@@ -33,4 +33,5 @@ Useful things that I have found
 purl('index.RMD')
 # Para guardar comentarios
 purl('index.RMD', output = 'test.R', documentation = 2)
-  ```
+  ```c
+* **footer/header.html** <- footer and header for html output (rmd) credit to https://github.com/holtzy/Pimp-my-rmd
