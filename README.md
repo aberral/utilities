@@ -36,3 +36,12 @@ purl('index.RMD', output = 'test.R', documentation = 2)
   ```
   
 * **footer/header.html** <- footer and header for html output (rmd) credit to https://github.com/holtzy/Pimp-my-rmd
+
+* **Convert pdf to png unix** <- convertir todos los pdf en el directorio a png
+```{bash}
+#!/bin/bash
+find . -type f -name '*.pdf' -print0 |
+  while IFS= read -r -d '' file
+    do convert -verbose -density 500 -resize 800 "${file}" "${file%.*}.png"
+  done
+```
