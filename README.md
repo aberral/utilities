@@ -45,3 +45,28 @@ find . -type f -name '*.pdf' -print0 |
     do convert -verbose -density 500 -quality 99 -resize 800 "${file}" "${file%.*}.png"
   done
 ```
+* **R snippets** <- rellena automaticamente el esqueleto de diversas estructuras al pulsar tab en r.
+  ```{R}
+  fun <- snippet for functions
+  ts <- add comented timestamp to code
+  if/el/ei <- if/else/elif statement
+  mat <- matriz
+  lib <- library
+  for <- bucle for
+  while <- bucle while
+  {x}apply <- estructura para la correspondiente funcion: sapply, lapply, vapply, apply, etc.
+  ```
+* **Visualizar funcion** <- como visualizar alguna funcion de manera facil con colores.
+```{R}
+invisible(edit('funcion que queramos ver'))
+invisible(edit(mean))
+```
+
+* **Asignaciones mas sencillas** <- usando el paquete magittr o dplyr.
+```{R}
+lirios <- iris[c(1:5,51:55,101:105),]
+lirios %>%
+  select(contains('Petal'))  %>%
+  filter(Petal.Length > 4)   %>%
+  arrange(Petal.Length) 
+```
