@@ -37,6 +37,13 @@ purl('index.RMD', output = 'test.R', documentation = 2)
   
 * **footer/header.html** <- footer and header for html output (rmd) credit to https://github.com/holtzy/Pimp-my-rmd
 
+* **progress bar to apply** <- adding pb to apply loops.
+```{R}
+library(pbapply)      
+mtrx <- pbsapply(separar, function(x) 
+    sapply(separar, function(y) is.subset(x, y)))
+```
+
 * **Convert pdf to png unix** <- convertir todos los pdf en el directorio a png
 ```{bash}
 #!/bin/bash
