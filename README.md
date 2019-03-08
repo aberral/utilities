@@ -34,7 +34,12 @@ purl('index.RMD')
 # Saving all comments
 purl('index.RMD', output = 'test.R', documentation = 2)
   ```
-  
+
+* **Working direcory** <- set the workind directory where the file is being executed
+```{R}
+wd <- dirname(rstudioapi::getSourceEditorContext()$path)
+setwd(wd)
+```
 * **footer/header.html** <- footer and header for html output (rmd) credit to https://github.com/holtzy/Pimp-my-rmd
 
 * **progress bar to apply** <- adding pb to apply loops.
