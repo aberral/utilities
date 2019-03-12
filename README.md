@@ -42,8 +42,15 @@ setwd(wd)
 ```
 * **footer/header.html** <- footer and header for html output (rmd) credit to https://github.com/holtzy/Pimp-my-rmd
 
-* **progress bar to apply** <- adding pb to apply loops.
+* **progress bar to for loop / apply** <- adding pb to apply loops.
 ```{R}
+library(svMisc)
+for (i in seq(1:5)){
+  progress(i, progress.bar = T)
+  ................
+  if (i == 5) cat("Done!\n")
+}
+###########################################
 library(pbapply)      
 mtrx <- pbsapply(separar, function(x) 
     sapply(separar, function(y) is.subset(x, y)))
