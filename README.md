@@ -1,41 +1,44 @@
 # Utilities
 Useful things that I have found
-  * **Github.R** <- This R script contais the following code, used to start the github repo of a project. 
-  Always start the repo before commiting in R.
-   ```{bash}
-   # How to upload things to GitHub:
-   #  1) Save the script, select it in the Git tab (right).
-   #  2) Click commit, enter a identifuing message in Commit message. (Maybe branches)
-   #  3) Push it to Github. Tools > Shell
-   git remote add origin https://github.com/aberral/'nombre del repo'.git
-   git config remote.origin.url git@github.com:aberral/'nombre del repo'.git
-   git pull origin master
-   git push origin master
-   
-   # Si alguna vez da errores: (borra todo en local)
-   git reset --hard origin/master
-   ```
-  
-  * **Layout.R** <- This R script create the folder structure of a new project, to maintain consistency across 
-  all projects done.
-  ```{r}
-  # Basic R-project layout
-  ifelse(file.exists('R/'), '', dir.create('R/'))
-  ifelse(file.exists('data/'), '', dir.create('data/'))
-  ifelse(file.exists('data/raw'), '', dir.create('data/raw'))
-  ifelse(file.exists('data/processed'), '', dir.create('data/processed'))
-  ifelse(file.exists('doc/'), '', dir.create('doc/'))
-  ifelse(file.exists('figs/'), '', dir.create('figs/'))
-  ifelse(file.exists('output/'), '', dir.create('output/'))
-  ```
+ * **Github.R** <- This R script contais the following code, used to start the github repo of a project. 
+ Always start the repo before commiting in R.
+  ```{bash}
+  # How to upload things to GitHub:
+  #  1) Save the script, select it in the Git tab (right).
+  #  2) Click commit, enter a identifuing message in Commit message. (Maybe branches)
+  #  3) Push it to Github. Tools > Shell
+  git remote add origin https://github.com/aberral/'nombre del repo'.git
+  git config remote.origin.url git@github.com:aberral/'nombre del repo'.git
+  git pull origin master
+  git push origin master
 
-  * **RmdtoR.R** <- This R script converts between .rmd and .R format
-  ```{R}
-  library(knitr)
-# Without comments outside chunks
-purl('index.RMD')
-# Saving all comments
-purl('index.RMD', output = 'test.R', documentation = 2)
+  # Si alguna vez da errores: (borra todo en local)
+  git reset --hard origin/master
+  ```
+  
+ * **Layout.R** <- This R script create the folder structure of a new project, to maintain consistency across 
+ all projects done.
+ ```{r}
+ # Basic R-project layout
+ ifelse(file.exists('R/'), '', dir.create('R/'))
+ ifelse(file.exists('data/'), '', dir.create('data/'))
+ ifelse(file.exists('data/raw'), '', dir.create('data/raw'))
+ ifelse(file.exists('data/processed'), '', dir.create('data/processed'))
+ ifelse(file.exists('doc/'), '', dir.create('doc/'))
+ ifelse(file.exists('figs/'), '', dir.create('figs/'))
+ ifelse(file.exists('output/'), '', dir.create('output/'))
+ ```
+
+ * **RmdtoR.R** <- This R script converts between .rmd and .R format
+ ```{R}
+ # R to RMD
+ rmarkdown::render("analysis.R")
+
+ library(knitr)
+ # Without comments outside chunks
+ purl('index.RMD')
+ # Saving all comments
+ purl('index.RMD', output = 'test.R', documentation = 2)
   ```
 
 * **Working direcory** <- set the workind directory where the file is being executed
