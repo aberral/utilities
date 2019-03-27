@@ -98,8 +98,13 @@ lirios %>%
 
 * **Listar todos los paquetes de R** <- use puede usar la primera columna despues de actualizar R.
 ```{R}
+# Generamos todos los paquetes en un dataframe
 ip <- as.data.frame(installed.packages()[,c(1,3:4)])
+# Eliminamos los rownames porque ya estan como variable en una columna
 rownames(ip) <- NULL
-ip <- ip[is.na(ip$Priority),1:2,drop=FALSE]
-print(ip, row.names=FALSE)
+# Nos quedamos con los paquetes que no son base, ni recomendados, y
+# eliminamos la columna
+ip <- ip[is.na(ip$Priority), 1:2 , drop = FALSE]
+# Guardamos los paquetes en un fichero
+write.csv(ip, 'paquetes.csv', row.names = F)
 ```
