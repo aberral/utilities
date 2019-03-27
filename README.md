@@ -96,7 +96,7 @@ lirios %>%
   arrange(Petal.Length) 
 ```
 
-* **Listar todos los paquetes de R** <- use puede usar la primera columna despues de actualizar R.
+* **Listar todos los paquetes de R instalados** <- se puede usar la primera columna despues de actualizar R para volver a installar los paquetes.
 ```{R}
 # Generamos todos los paquetes en un dataframe
 ip <- as.data.frame(installed.packages()[,c(1,3:4)])
