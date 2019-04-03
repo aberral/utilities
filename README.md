@@ -9,6 +9,9 @@ Useful things that I have found
   #  3) Push it to Github. Tools > Shell
   git remote add origin https://github.com/aberral/'nombre del repo'.git
   git config remote.origin.url git@github.com:aberral/'nombre del repo'.git
+  git config --global user.email aberralgonzalez@usal.es
+  git config --global user.name aberral
+  
   git pull origin master
   git push origin master
 
