@@ -11,9 +11,9 @@ Useful things that I have found
   git config remote.origin.url git@github.com:aberral/'nombre del repo'.git
   git config --global user.email aberralgonzalez@usal.es
   git config --global user.name aberral
-  
-  git pull origin master
-  git push origin master
+  # -u is used so Rstudio buttons wont go gray
+  git pull -u origin master
+  git push -u origin master
 
   # Si alguna vez da errores: (borra todo en local)
   git reset --hard origin/master
