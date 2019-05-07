@@ -111,3 +111,15 @@ ip <- ip[is.na(ip$Priority), 1:2 , drop = FALSE]
 # Guardamos los paquetes en un fichero
 write.csv(ip, 'paquetes.csv', row.names = F)
 ```
+* **Cargar objetos concrectos de un rdata** <- como cargar objetos de un rdata sin cargar todo su contenido en memoria.
+```{R}
+e1 <- new.env()
+load("/home/aberral/Data/cms_jorge_julienne/data/env_final.RData", envir = e1)
+ls(e1)
+
+AAAmExpr_RMA_Combat <- get('AAAmExpr_RMA_Combat', e1)
+mExpr <- AAAmExpr_RMA_Combat
+eids <- get('eids', e1)
+mClin1273 <- get('mClin1273', e1)
+rm(e1)
+```
