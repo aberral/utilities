@@ -34,8 +34,8 @@ This R script contais the following code, used to start the github repo of a pro
   git config --global user.email aberralgonzalez@usal.es
   git config --global user.name aberral
   # -u is used so Rstudio buttons wont go gray
-  git pull -u origin master
-  git push -u origin master
+  git pull -u origin 'nombre del repo'
+  git push -u origin 'nombre del repo'
 
   # Si alguna vez da errores: (borra todo en local)
   git reset --hard origin/master
