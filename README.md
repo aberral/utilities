@@ -37,6 +37,9 @@ This R script contais the following code, used to start the github repo of a pro
   git pull -u origin master
   git push -u origin master
 
+  # Si falla el -u flag usar:
+  # add-apt-repository ppa:git-core/ppa 
+  # apt update; apt install git
   **INICIAR REPO CON README** 
   git config remote.origin.url git@github.com:aberral/'nombre del repo'.git
   git config --global user.email aberralgonzalez@usal.es
