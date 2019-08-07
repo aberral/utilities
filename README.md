@@ -25,6 +25,9 @@ This R script contais the following code, used to start the github repo of a pro
   ```{bash}
   ------> https://hefistion.github.io/Empezando-con-Git-I/
   
+  # Si alguna vez pide usario y contraseña de un repo, modificar el archivo config dentro del repo en local
+  # y poner la url en formato: 
+  - url = git@github.com:aberral/log.git
   # How to upload things to GitHub:
   #  1) Save the script, select it in the Git tab (right).
   #  2) Click commit, enter a identifuing message in Commit message. (Maybe branches)
