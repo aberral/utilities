@@ -29,7 +29,8 @@ This R script contais the following code, used to start the github repo of a pro
   
   
 
-Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit history but keep the code in its current state, it is very safe to do it as in the following:
+Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit 
+history but keep the code in its current state, it is very safe to do it as in the following:
 
     - Checkout
 
@@ -58,8 +59,8 @@ Deleting the .git folder may cause problems in your git repository. If you want 
 PS: this will not keep your old commit history around
 
 
-  # Si alguna vez pide usario y contraseña de un repo, modificar el archivo config dentro del repo en local
-  # y poner la url en formato: 
+  # Si alguna vez pide usario y contraseña de un repo, modificar el archivo config dentro del repo en 
+  # local y poner la url en formato: 
   - url = git@github.com:aberral/log.git
   
   
