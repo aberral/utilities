@@ -193,6 +193,22 @@ rownames(ip) <- NULL
 ip <- ip[is.na(ip$Priority), 1:2 , drop = FALSE]
 # Guardamos los paquetes en un fichero
 write.csv(ip, 'paquetes.csv', row.names = F)
+
+paquetes <- read.csv(file = 'paquetes.csv')
+
+# INSTALACION ########################################################
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install()
+
+install.packages("pacman")
+
+for (i in paquetes$Package){
+  print(i)
+  pacman::p_load(i)
+  # browser()
+}
+
 ```
 ## 12. Load exact objects from Rdata
 How to load specific objects from rdata whithout loading the whole rdata.
