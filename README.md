@@ -30,8 +30,9 @@ This R script contais the following code, used to start the github repo of a pro
   
   
 
-Deleting the .git folder may cause problems in your git repository. If you want to delete all your commit 
-history but keep the code in its current state, it is very safe to do it as in the following:
+Deleting the .git folder may cause problems in your git repository. If you want to delete 
+all your commit history but keep the code in its current state, it is very safe to do it 
+as in the following:
 
     - Checkout
 
