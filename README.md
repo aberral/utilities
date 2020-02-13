@@ -234,7 +234,8 @@ Ventajas:
 Inconvenientes...
 
     Una vez definida la clase, y creado el objeto, no se puede ampliar (no se pueden añadir más datos 
-    de los que define la clase, es decir, no podemos añadirle una matriz extra a las que ya están declaradas.
+    de los que define la clase, es decir, no podemos añadirle una matriz extra a las que ya están
+    declaradas.
 
 ##############################################################
 ```{R}
