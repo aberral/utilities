@@ -227,16 +227,19 @@ rm(e1)
 ## 13. Create new R object
 Ventajas:
 
-    Variables predefinidas, incluso el tipo de datos que son. Más control sobre los datos con los que van a trabajar nuestras funciones.
+    Variables predefinidas, incluso el tipo de datos que son. Más control sobre los datos con los que 
+    van a trabajar nuestras funciones.
     Posibilidad de definir funciones para que automaticamente se ejecuten para cosas muy comunes.
 
 Inconvenientes...
 
-    Una vez definida la clase, y creado el objeto, no se puede ampliar (no se pueden añadir más datos de los que define la clase, es decir, no podemos añadirle una matriz extra a las que ya están declaradas.
+    Una vez definida la clase, y creado el objeto, no se puede ampliar (no se pueden añadir más datos 
+    de los que define la clase, es decir, no podemos añadirle una matriz extra a las que ya están declaradas.
 
 ##############################################################
 ```{R}
-# Creating the DeepNNModel object: this object will store all information, structure and data of the Neural Network
+# Creating the DeepNNModel object: this object will store all information, structure and data of the 
+# Neural Network
   DeepNNModel <- setClass(Class = "DeepNNModel", slots = list(dnn = "list", 
                                                               error = "numeric", 
                                                               bestDnn = "list",
@@ -256,7 +259,8 @@ setMethod("show",
 # We create an object of class DeppNNModel and we asign it some values
 DeepNNModel <- DeepNNModel(dnn = Wn, dnn.structure = c(D,H,K))
 
-## Ahora al poner el objeto en la consola de R y darle a enter para mostrar su contenido (es lo mismo que hacer show(objeto o variable) ejecutará nuestra función, y no la de por defecto:
+## Ahora al poner el objeto en la consola de R y darle a enter para mostrar su contenido (es lo mismo 
+## que hacer show(objeto o variable) ejecutará nuestra función, y no la de por defecto:
 > DeepNNModel
 Object of class:  DeepNNModel
           - stores a deep neural network model and its metrics.
