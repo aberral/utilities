@@ -143,6 +143,11 @@ for (i in seq(1:5)){
 library(pbapply)      
 mtrx <- pbsapply(separar, function(x) 
     sapply(separar, function(y) is.subset(x, y)))
+#############################################
+for (i in seq(1,10)) {
+  cat('\r', paste0('Progress:', i*10, '%'))
+  flush.console() 
+}
 ```
 
 ## 7. Convert pdf to png unix
