@@ -30,9 +30,9 @@ This R script contais the following code, used to start the github repo of a pro
   
   
 
-Deleting the .git folder may cause problems in your git repository. If you want to delete 
+Deleting the .git folder may cause problems in your git repository. **If you want to delete 
 all your commit history but keep the code in its current state, it is very safe to do it 
-as in the following:
+as in the following:**
 
     - Checkout
 
@@ -70,6 +70,8 @@ PS: this will not keep your old commit history around
   #  1) Save the script, select it in the Git tab (right).
   #  2) Click commit, enter a identifuing message in Commit message. (Maybe branches)
   #  3) Push it to Github. Tools > Shell
+  git remote -v
+  git remote rm origin
   git remote add origin https://github.com/aberral/'nombre del repo'.git
   git config remote.origin.url git@github.com:aberral/'nombre del repo'.git
   git config --global user.email aberralgonzalez@usal.es
