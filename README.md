@@ -78,8 +78,8 @@ PS: this will not keep your old commit history around
   git config --global user.email aberralgonzalez@usal.es
   git config --global user.name aberral
   # -u is used so Rstudio buttons wont go gray
-  git pull -u origin master
-  git push -u origin master
+  git pull origin master --set-upstream
+  git push origin master --set-upstream
 
   # Si falla el -u flag usar:
   # add-apt-repository ppa:git-core/ppa 
