@@ -216,6 +216,7 @@ install.packages("pacman")
 for (i in paquetes$Package){
   print(i)
   pacman::p_load(i)
+  invisible(readline(prompt="Press [enter] to continue"))
   # browser()
 }
 
