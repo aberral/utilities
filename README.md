@@ -215,9 +215,10 @@ install.packages("pacman")
 
 for (i in paquetes$Package){
   print(i)
-  pacman::p_load(i)
-  invisible(readline(prompt="Press [enter] to continue"))
-  # browser()
+  result <- tryCatch(pacman::p_load(i))
+  if (inherits(result,"warning")) {
+    nvisible(readline(prompt="Press [enter] to continue"))
+  }
 }
 
 ```
