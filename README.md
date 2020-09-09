@@ -235,6 +235,7 @@ mClin1273 <- get('mClin1273', e1)
 rm(e1)
 ```
 ## 13. Create new R object
+@https://github.com/OscarGVelasco/DeepNeuralNetworks4R
 Ventajas:
 
     Variables predefinidas, incluso el tipo de datos que son. Más control sobre los datos con los que 
