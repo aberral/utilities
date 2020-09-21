@@ -65,7 +65,13 @@ PS: this will not keep your old commit history around
   # local y poner la url en formato: 
   - url = git@github.com:aberral/log.git
   
+  ##0) Como iniciar el repo si la has liado
   
+    git checkout master
+    git fetch origin
+    git reset --hard origin/master
+    git checkout -b newbranch
+
   ##1 How to upload things to GitHub:
   #  1) Save the script, select it in the Git tab (right).
   #  2) Click commit, enter a identifuing message in Commit message. (Maybe branches)
