@@ -218,10 +218,17 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install()
 
 install.packages("pacman")
+install.packages("httr")
 
 # Let's install via terminal some dependencies as:
- -
-
+ - libxml2
+ - libxml2-dev
+ - libssl
+ - libssl-dev
+ - libcurl
+ - libcurl4-openssl-dev
+ 
+Then we do:
 pacman::p_load(paquetes$Package, character.only = T) 
 
 ```
