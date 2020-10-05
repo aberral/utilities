@@ -228,7 +228,7 @@ install.packages("httr")
  - libcurl
  - libcurl4-openssl-dev
  
-Then we do:
+# Then we do:
 pacman::p_load(paquetes$Package, character.only = T) 
 
 ```
