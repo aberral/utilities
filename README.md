@@ -219,13 +219,10 @@ BiocManager::install()
 
 install.packages("pacman")
 
-for (i in paquetes$Package){
-  print(i)
-  result <- tryCatch(pacman::p_load(i))
-  if (inherits(result,"warning")) {
-    nvisible(readline(prompt="Press [enter] to continue"))
-  }
-}
+# Let's install via terminal some dependencies as:
+ -
+
+pacman::p_load(paquetes$Package, character.only = T) 
 
 ```
 ## 12. Load exact objects from Rdata
