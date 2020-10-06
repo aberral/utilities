@@ -228,6 +228,8 @@ install.packages("httr")
  - libcurl
  - libcurl4-openssl-dev
  
+ sudo apt-get install libxml2 libxml2-dev libssl libssl-dev libcurl libcurl4-openssl-dev
+ 
 # Then we do:
 pacman::p_load(paquetes$Package, character.only = T) 
 
