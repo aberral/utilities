@@ -197,12 +197,13 @@ lirios %>%
   arrange(Petal.Length) 
 ```
 
-## 11. List all R packages installed
-The first column can be used to install the packages after a new R installation.
+## 11. Create RDS of installed R packages with repo
+Used to upgrade R or after a new system install
 ```{R}
-pacman::p_load(tidyverse, here)
 # Creation of rds objects with packages
 ######################################################################################
+pacman::p_load(tidyverse, here)
+
 # data frame of all installed packages
 local_pkgs <- installed.packages() %>%
   as_tibble() %>%
