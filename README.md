@@ -12,9 +12,10 @@ Useful things that I have found
 - [8. R snippets](#8-r-snippets)
 - [9. Check function](#9-check-function)
 - [10. Simple assignations](#10-simple-assignations)
-- [11. List all R packages installed](#11-list-all-r-packages-installed)
-- [12. Load exact objects from Rdata](#12-load-exact-objects-from-rdata)
-- [13. Create new R Objetcts](#13-create-new-r-object)
+- [11. Create RDS of installed R packages with repo](#11-create-rds-of-installed-r-packages-with-repo)
+- [12. Install R packages from RDS](#11-install-r-packages-from-rds)
+- [13. Load exact objects from Rdata](#13-load-exact-objects-from-rdata)
+- [14. Create new R Objetcts](#14-create-new-r-object)
 
 <!-- /TOC -->
 
@@ -198,7 +199,7 @@ lirios %>%
 ```
 
 ## 11. Create RDS of installed R packages with repo
-Used to upgrade R or after a new system install
+Used to create a backup of installed R packages
 ```{R}
 # Creation of rds objects with packages
 ######################################################################################
@@ -259,9 +260,10 @@ dir.create(here("data"))
 # output file
 out_file <- as.character(str_glue("pkg-data_{Sys.Date()}.rds"))
 write_rds(compare_frame, here("data", out_file))
-
-# Installation
-######################################################################################
+```
+## 12. Install R packages from RDS
+To use after R upgrade or OS install
+```{R}
 # If it's a new OS, install this system dependencies
  - libxml2
  - libxml2-dev
@@ -296,9 +298,8 @@ install.packages(cran_pkgs)
 # install from biconductor
 bioc_pkgs <- pkgs[str_detect(pkgs$source, "Bioconductor"), ][["package"]]
 remotes::install_bioc(bioc_pkgs)
-
 ```
-## 12. Load exact objects from Rdata
+## 13. Load exact objects from Rdata
 How to load specific objects from rdata whithout loading the whole rdata.
 ```{R}
 e1 <- new.env()
@@ -311,7 +312,7 @@ eids <- get('eids', e1)
 mClin1273 <- get('mClin1273', e1)
 rm(e1)
 ```
-## 13. Create new R object
+## 14. Create new R object
 @https://github.com/OscarGVelasco/DeepNeuralNetworks4R
 Ventajas:
 
