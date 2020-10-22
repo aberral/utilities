@@ -200,27 +200,68 @@ lirios %>%
 ## 11. List all R packages installed
 The first column can be used to install the packages after a new R installation.
 ```{R}
-# Generamos todos los paquetes en un dataframe
-ip <- as.data.frame(installed.packages()[,c(1,3:4)])
-# Eliminamos los rownames porque ya estan como variable en una columna
-rownames(ip) <- NULL
-# Nos quedamos con los paquetes que no son base, ni recomendados, y
-# eliminamos la columna
-ip <- ip[is.na(ip$Priority), 1:2 , drop = FALSE]
-# Guardamos los paquetes en un fichero
-write.csv(ip, 'paquetes.csv', row.names = F)
+pacman::p_load(tidyverse, here)
+# Creation of rds objects with packages
+######################################################################################
+# data frame of all installed packages
+local_pkgs <- installed.packages() %>%
+  as_tibble() %>%
+  print()
 
-paquetes <- read.csv(file = 'paquetes.csv')
+# get source details (cran, github...) from package_info()
+local_details <- 
+  sessioninfo::package_info(pkgs = local_pkgs$Package) %>%
+  as_tibble() %>%
+  select(package, local_version = ondiskversion, source) %>%
+  print()
 
-# INSTALACION ########################################################
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-BiocManager::install()
+# available.packages() returns pkg info for ALL pkgs on CRAN.
+cran_pkgs <- available.packages() %>% 
+  as_tibble(.name_repair = tolower) %>%
+  print()
+# Packages we have already installed
+slimmer_frame <- 
+  left_join(
+    x = select(local_details, package, local_version, source),
+    y = select(cran_pkgs, package, cran_version = version)
+  ) %>%
+  print()
 
-install.packages("pacman")
-install.packages("httr")
+# Packages for installation
+compare_frame <- slimmer_frame %>%
+  group_by(package) %>% 
+  mutate(
+    source_locale = case_when(
+      compareVersion(local_version, cran_version) == 1 &
+        str_detect(source, "Github") ~ "Github",
+      compareVersion(local_version, cran_version) == 1 &
+        is.na(cran_version) &
+        str_detect(source, "CRAN") ~ "Unavailable on CRAN",
+      compareVersion(local_version, cran_version) == 1 &
+        (is.na(cran_version) == FALSE) &
+        str_detect(source, "CRAN") ~ "Downgraded on CRAN",
+      compareVersion(local_version, cran_version) %in% c(-1, 0) ~ "CRAN"
+    ),
+    github_repo = case_when(
+      source_locale == "Github" ~ 
+        str_split(string = source, pattern = "@", simplify = TRUE)[,1] %>%
+        str_replace("Github \\(", ""),
+      TRUE ~ as.character(NA)
+    ),
+  ) %>%
+  ungroup() %>%
+  print()
 
-# Let's install via terminal some dependencies as:
+# output data location
+dir.create(here("data"))
+
+# output file
+out_file <- as.character(str_glue("pkg-data_{Sys.Date()}.rds"))
+write_rds(compare_frame, here("data", out_file))
+
+# Installation
+######################################################################################
+# If it's a new OS, install this system dependencies
  - libxml2
  - libxml2-dev
  - libssl
@@ -229,9 +270,31 @@ install.packages("httr")
  - libcurl4-openssl-dev
  
  sudo apt-get install libxml2 libxml2-dev libssl libssl-dev libcurl libcurl4-openssl-dev
- 
-# Then we do:
-pacman::p_load(paquetes$Package, character.only = T) 
+
+# install pacman and httr
+install.packages("pacman")
+install.packages("httr")
+
+# to install from github
+install.packages("remotes")
+
+# should still be operating in your working directory so downloading {here} makes sense also
+install.packages("here")
+
+# read package data
+pkgs <- readRDS(here::here("data", "pkg-data_2020-10-22.rds"))
+
+# install from github repos
+github_pkgs <- pkgs[str_detect(pkgs$source, "Github"), ][["github_repo"]]
+remotes::install_github(github_pkgs)
+
+# install from cran 
+cran_pkgs <- pkgs[str_detect(pkgs$source, "CRAN"), ][["package"]]
+install.packages(cran_pkgs)
+
+# install from biconductor
+bioc_pkgs <- pkgs[str_detect(pkgs$source, "Bioconductor"), ][["package"]]
+remotes::install_bioc(bioc_pkgs)
 
 ```
 ## 12. Load exact objects from Rdata
