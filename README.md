@@ -13,7 +13,7 @@ Useful things that I have found
 - [9. Check function](#9-check-function)
 - [10. Simple assignations](#10-simple-assignations)
 - [11. Create RDS of installed R packages with repo](#11-create-rds-of-installed-r-packages-with-repo)
-- [12. Install R packages from RDS](#11-install-r-packages-from-rds)
+- [12. Install R packages from RDS](#12-install-r-packages-from-rds)
 - [13. Load exact objects from Rdata](#13-load-exact-objects-from-rdata)
 - [14. Create new R Objetcts](#14-create-new-r-object)
 
