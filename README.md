@@ -16,6 +16,7 @@ Useful things that I have found
 - [12. Install R packages from RDS](#12-install-r-packages-from-rds)
 - [13. Load exact objects from Rdata](#13-load-exact-objects-from-rdata)
 - [14. Create new R Objetcts](#14-create-new-r-object)
+- [15. Rstudio-Telegram Notifying Bot](#15-telegram-bot)
 
 <!-- /TOC -->
 
@@ -355,3 +356,61 @@ DeepNNModel <- DeepNNModel(dnn = Wn, dnn.structure = c(D,H,K))
 Object of class:  DeepNNModel
           - stores a deep neural network model and its metrics.
 ```
+## 15. Telegram Bot
+Sauce: https://blog.datascienceheroes.com/get-notify-when-an-r-script-finishes-on-telegram/
+
+Step 1: Create a bot
+Find @BotFather on telegram. Send the message: \start. Then \newbot. And follow the instructions.
+The first name asked is the one that will appear on telegram. The secon one is the one in the url.
+Save the bot token and never share publicly.
+
+Step 2: Set-up the bot
+After your bot is created. You have to send the message \start. And the bot is finally configurated!
+
+Step 3: Use it with R
+
+Put the bot token in the .Renviron:
+```{R}
+user_renviron <- path.expand(file.path("~", ".Renviron"))
+file.edit(user_renviron) 
+# This should look something like this:
+## R_TELEGRAM_BOT_AberralRBot=XXXXXXXXXX:YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+```
+Now restart R.
+
+# install.packages("telegram.bot")
+library(telegram.bot)
+
+# Initiate the bot session using the token from the enviroment variable.
+bot = Bot(token = bot_token('arbot_bot'))
+
+# The first time, you will need the chat id (which is the chat where you will get the notifications)
+updates = bot$getUpdates()
+
+> updates
+  update_id message.message_id message.from.id message.from.is_bot message.from.first_name message.from.last_name
+1 639401623                  1       174860321               FALSE            admin                 admin
+2 639401624                  2       174860321               FALSE            admin                 admin
+  message.from.language_code message.chat.id message.chat.first_name message.chat.last_name message.chat.type message.date
+1                      en-US       174860321            admin                 admin           private   1540571205
+2                      en-US       174860321            admin                 admin           private   1540571208
+  message.text  message.entities
+1       /start 0, 6, bot_command
+2        hello              NULL
+
+Time to use in the R workflow! We will send a test message and a plot:
+
+Note 1: chat_id=message.chat.id.
+Note 2: R_TELEGRAM_BOT_{the name of your bot}
+
+# Sending text
+message_to_bot=sprintf('Process finished - Accuracy: %s', 0.99)
+
+bot$sendMessage(chat_id = 174860321, text = message_to_bot)
+
+# Sending image (we need to save it first)
+library(ggplot2)
+my_plot=ggplot(mtcars, aes(x=mpg))  + geom_histogram(bins = 5)
+ggplot2::ggsave("my_plot.png", my_plot)
+
+bot$sendPhoto(chat_id = 174860321, photo = 'my_plot.png')
