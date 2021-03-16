@@ -376,41 +376,28 @@ file.edit(user_renviron)
 # This should look something like this:
 ## R_TELEGRAM_BOT_AberralRBot=XXXXXXXXXX:YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 ```
-Now restart R.
+Now restart R. Rstudio `Session' > 'Restar R'
 
-# install.packages("telegram.bot")
-library(telegram.bot)
+```{R}
+pacman::p_load("telegram.bot")
 
 # Initiate the bot session using the token from the enviroment variable.
-bot = Bot(token = bot_token('arbot_bot'))
+bot = Bot(token = bot_token('AberralRBot')) # Same name as in the R Environ.
 
 # The first time, you will need the chat id (which is the chat where you will get the notifications)
-updates = bot$getUpdates()
-
-> updates
-  update_id message.message_id message.from.id message.from.is_bot message.from.first_name message.from.last_name
-1 639401623                  1       174860321               FALSE            admin                 admin
-2 639401624                  2       174860321               FALSE            admin                 admin
-  message.from.language_code message.chat.id message.chat.first_name message.chat.last_name message.chat.type message.date
-1                      en-US       174860321            admin                 admin           private   1540571205
-2                      en-US       174860321            admin                 admin           private   1540571208
-  message.text  message.entities
-1       /start 0, 6, bot_command
-2        hello              NULL
+https://docs.influxdata.com/kapacitor/v1.5/event_handlers/telegram/
+Go to:
+https://api.telegram.org/bot<API-access-token>/getUpdates?offset=0
+where <API-access-token> is your token. And retriever your personal chat id.
 
 Time to use in the R workflow! We will send a test message and a plot:
 
-Note 1: chat_id=message.chat.id.
-Note 2: R_TELEGRAM_BOT_{the name of your bot}
-
 # Sending text
 message_to_bot=sprintf('Process finished - Accuracy: %s', 0.99)
-
 bot$sendMessage(chat_id = 174860321, text = message_to_bot)
 
 # Sending image (we need to save it first)
 library(ggplot2)
 my_plot=ggplot(mtcars, aes(x=mpg))  + geom_histogram(bins = 5)
 ggplot2::ggsave("my_plot.png", my_plot)
-
 bot$sendPhoto(chat_id = 174860321, photo = 'my_plot.png')
