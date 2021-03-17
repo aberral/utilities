@@ -360,11 +360,13 @@ Object of class:  DeepNNModel
 Sauce: https://blog.datascienceheroes.com/get-notify-when-an-r-script-finishes-on-telegram/
 
 Step 1: Create a bot
+
 Find @BotFather on telegram. Send the message: \start. Then \newbot. And follow the instructions.
 The first name asked is the one that will appear on telegram. The secon one is the one in the url.
 Save the bot token and never share publicly.
 
 Step 2: Set-up the bot
+
 After your bot is created. You have to send the message \start. And the bot is finally configurated!
 
 Step 3: Use it with R
