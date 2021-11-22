@@ -277,25 +277,18 @@ To use after R upgrade or OS install
 
 # install some packages
 install.packages("pacman")
-install.packages("httr")
-install.packages("stringr")
-
-# to install from github
-install.packages("remotes")
-
-# should still be operating in your working directory so downloading {here} makes sense also
-install.packages("here")
+pacman::p_load("httr", "remotes", "here", 'stringr')
 
 # read package data
 pkgs <- readRDS(here::here("data", "pkg-data_2020-10-22.rds"))
 
-# install from github repos
-github_pkgs <- pkgs[str_detect(pkgs$source, "Github"), ][["github_repo"]]
-remotes::install_github(github_pkgs)
-
 # install from cran 
 cran_pkgs <- pkgs[str_detect(pkgs$source, "CRAN"), ][["package"]]
 install.packages(cran_pkgs)
+
+# install from github repos
+github_pkgs <- pkgs[str_detect(pkgs$source, "Github"), ][["github_repo"]]
+remotes::install_github(github_pkgs)
 
 # install from biconductor
 bioc_pkgs <- pkgs[str_detect(pkgs$source, "Bioconductor"), ][["package"]]
