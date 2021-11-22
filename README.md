@@ -273,7 +273,12 @@ To use after R upgrade or OS install
  - libcurl
  - libcurl4-openssl-dev
  
- sudo apt-get install libxml2 libxml2-dev libssl libssl-dev libcurl libcurl4-openssl-dev
+# sudo apt update
+# sudo apt upgrade
+# sudo apt-get install r-base
+# sudo apt-get install gdebi
+# sudo apt-get install libssl-dev
+# sudo apt-get install libcurl4-openssl-dev
 
 # install some packages
 install.packages("pacman")
