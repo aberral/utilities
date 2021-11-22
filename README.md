@@ -275,9 +275,10 @@ To use after R upgrade or OS install
  
  sudo apt-get install libxml2 libxml2-dev libssl libssl-dev libcurl libcurl4-openssl-dev
 
-# install pacman and httr
+# install some packages
 install.packages("pacman")
 install.packages("httr")
+install.packages("stringr")
 
 # to install from github
 install.packages("remotes")
