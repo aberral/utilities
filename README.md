@@ -17,7 +17,7 @@ Useful things that I have found
 - [13. Load exact objects from Rdata](#13-load-exact-objects-from-rdata)
 - [14. Create new R Objetcts](#14-create-new-r-object)
 - [15. Rstudio-Telegram Notifying Bot](#15-telegram-bot)
-- [16. HGNC database creation]
+- [16. HGNC database creation](#16-hgnc-database-creation)
 
 <!-- /TOC -->
 
